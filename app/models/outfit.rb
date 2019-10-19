@@ -1,4 +1,5 @@
 class Outfit < ApplicationRecord
-  has_many: tops
-  has_many: bottoms
+  belongs_to :user, optional: true
+  has_many :tops
+  has_many :bottoms
 end

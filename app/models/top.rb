@@ -1,4 +1,4 @@
 class Top < ApplicationRecord
-  belongs_to :user
-  belongs_to :outfit
+  belongs_to :outfit, optional: true
+  has_many :users, through: :outfits
 end

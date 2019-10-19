@@ -1,11 +1,10 @@
-class CreateBottoms < ActiveRecord::Migration[6.0]
+class CreateTops < ActiveRecord::Migration[6.0]
   def change
-    create_table :bottoms do |t|
+    create_table :tops do |t|
       t.string :name
       t.string :img_url
-      t.string :type
+      t.string :category
       t.string :color
-      t.belongs_to :user, null: false, foreign_key: true
       t.belongs_to :outfit, null: false, foreign_key: true
 
       t.timestamps
