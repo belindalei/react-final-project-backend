@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       resources :outfits 
       resources :tops
       resources :bottoms
+      get '/autologin', to: "auth#create"
+      # post '/login', to:"auth#login"
     end
   end
 
