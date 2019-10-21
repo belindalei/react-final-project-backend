@@ -5,7 +5,6 @@ class CreateBottoms < ActiveRecord::Migration[6.0]
       t.string :img_url
       t.string :category
       t.string :color
-      t.belongs_to :outfit, null: false, foreign_key: true
 
       t.timestamps
     end

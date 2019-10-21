@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_212652) do
+ActiveRecord::Schema.define(version: 2019_10_21_132944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,17 +20,16 @@ ActiveRecord::Schema.define(version: 2019_10_18_212652) do
     t.string "img_url"
     t.string "category"
     t.string "color"
-    t.bigint "outfit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["outfit_id"], name: "index_bottoms_on_outfit_id"
   end
 
   create_table "outfits", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id"
+    t.integer "bottom_id"
+    t.integer "top_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_outfits_on_user_id"
   end
 
   create_table "tops", force: :cascade do |t|
@@ -38,10 +37,8 @@ ActiveRecord::Schema.define(version: 2019_10_18_212652) do
     t.string "img_url"
     t.string "category"
     t.string "color"
-    t.bigint "outfit_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["outfit_id"], name: "index_tops_on_outfit_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,7 +48,4 @@ ActiveRecord::Schema.define(version: 2019_10_18_212652) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "bottoms", "outfits"
-  add_foreign_key "outfits", "users"
-  add_foreign_key "tops", "outfits"
 end
