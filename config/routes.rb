@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do 
       # rewrite these to only the routes we want
       resources :users
-      resources :outfits 
+      resources :outfits
       resources :tops
       resources :bottoms
 
