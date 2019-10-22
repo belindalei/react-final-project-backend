@@ -3,4 +3,6 @@ class Api::V1::TopsController < ApplicationController
     @tops = Top.all 
     render json: @tops
   end
+
+  
 end

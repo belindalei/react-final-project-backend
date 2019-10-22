@@ -1,13 +1,4 @@
 class Api::V1::OutfitsController < ApplicationController
-  def index
-    @outfits = Outfit.all 
-    render json: @outfits
-  end
-
-  def show
-      @outfit = Outfit.find(params[:id])
-      render json: @outfit
-  end
 
   def create
       outfit = Outfit.new(outfit_params)
@@ -17,15 +8,23 @@ class Api::V1::OutfitsController < ApplicationController
       else 
       render json: {errors: outfit.errors.full_messages}
       end
-
   end
 
-
   def destroy
-      outfit = Outfit.find(params[:id])
-      outfit.destroy
+    outfit = Outfit.find(params[:id])
+    outfit.destroy
+    
+    render json: {message: "Successfully deleted"}
+  end
+  
+  def index
+    @outfits = Outfit.all 
+    render json: @outfits
+  end
 
-      render json: {message: "Successfully deleted"}
+  def show
+      @outfit = Outfit.find(params[:id])
+      render json: @outfit
   end
 
   private

@@ -1,23 +1,22 @@
 class Api::V1::UsersController < ApplicationController
 
-  def show
-      @user = User.find(params[:id])
-      #should we serialize the user to send the outfits?
-      render json: @user
-  end
-
   def create 
     user = User.create(user_params)
     # check if valid once we have validations -- how to handle validations in react? Alert window? Try/catch?
     token = JWT.encode({user: user.id}, "clueless")
-
-    render json: {user: user, token: token}
+    
+    render json: {user: UserSerializer.new(user), token: token}
   end
-  
-    # def index
-    #     @users = User.all
-    #     render json: @users
-    # end
+
+  def show
+      user = User.find(params[:id])
+      render json: {user: UserSerializer.new(user)}
+  end
+
+  def index
+      users = User.all
+      render json: users
+  end
 
     # def create
     #     user = User.new(user_params)
