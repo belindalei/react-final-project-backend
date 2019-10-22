@@ -7,6 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        #should we serialize the user to send the outfits?
         render json: @user
     end
 
